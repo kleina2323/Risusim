@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>יומן ריסוסים - משק קליין</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="header-text">
+                <h1>🌿 יומן ריסוסים</h1>
+                <p class="subtitle">משק קליין - תיעוד ריסוסים וטיפולים</p>
+                <div id="datetime" class="datetime"></div>
+            </div>
+            <img src="css/arbel.png" alt="הר ארבל" class="header-logo">
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- טאבים לפי ענף -->
+        <section class="tabs-section">
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="all">📋 הכל</button>
+                <button class="tab-btn" data-tab="lychee">🍒 ליצ'י</button>
+                <button class="tab-btn" data-tab="olives">🫒 זיתים</button>
+                <button class="tab-btn" data-tab="avocado">🥑 אבוקדו</button>
+            </div>
+        </section>
+
+        <!-- סטטיסטיקות -->
+        <section class="stats-section">
+            <div class="stat-card">
+                <span class="stat-number" id="total-sprays">0</span>
+                <span class="stat-label">סה"כ ריסוסים</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="this-month">0</span>
+                <span class="stat-label">החודש</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="last-spray">-</span>
+                <span class="stat-label">ריסוס אחרון</span>
+            </div>
+        </section>
+
+        <!-- טופס הוספת ריסוס -->
+        <section class="form-section">
+            <h2>📝 הוסף ריסוס חדש</h2>
+            
+            <form id="spray-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="spray-date">תאריך:</label>
+                        <input type="date" id="spray-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="spray-branch">ענף:</label>
+                        <select id="spray-branch" required>
+                            <option value="">בחר ענף</option>
+                            <option value="lychee">🍒 ליצ'י</option>
+                            <option value="olives">🫒 זיתים</option>
+                            <option value="avocado">🥑 אבוקדו</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="spray-plot">חלקה:</label>
+                        <select id="spray-plot">
+                            <option value="">בחר חלקה</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="spray-product">שם התכשיר:</label>
+                        <input type="text" id="spray-product" placeholder="לדוגמה: קונפידור, מלאתיון..." required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="spray-concentration">ריכוז/מינון:</label>
+                        <input type="text" id="spray-concentration" placeholder="לדוגמה: 0.5% או 100 מ״ל לדונם">
+                    </div>
+                    <div class="form-group">
+                        <label for="spray-target">מטרה/מזיק:</label>
+                        <input type="text" id="spray-target" placeholder="לדוגמה: כנימות, תריפס, עש...">
+                    </div>
+                    <div class="form-group">
+                        <label for="spray-area">שטח (דונם):</label>
+                        <input type="number" id="spray-area" step="0.1" placeholder="לדוגמה: 5">
+                    </div>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label for="spray-notes">הערות:</label>
+                    <textarea id="spray-notes" rows="2" placeholder="מזג אוויר, תצפיות, הערות נוספות..."></textarea>
+                </div>
+                
+                <div class="btn-row">
+                    <button type="submit" class="btn-add">+ הוסף ריסוס</button>
+                    <img src="css/risus.png" alt="טרקטור" class="btn-image">
+                </div>
+            </form>
+        </section>
+
+        <!-- רשימת ריסוסים -->
+        <section class="sprays-section">
+            <div id="sprays-list" class="sprays-list">
+                <!-- ריסוסים יוספו כאן דינמית -->
+            </div>
+            <div id="empty-state" class="empty-state">
+                <p>🌿 אין ריסוסים עדיין. הוסף ריסוס חדש!</p>
+            </div>
+        </section>
+
+        <!-- ייצוא -->
+        <section class="export-section">
+            <button id="export-btn" class="btn-export">📥 ייצוא לאקסל</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>משק קליין © 2025</p>
+    </footer>
+
+    <!-- Modal לעריכת ריסוס -->
+    <div id="edit-modal" class="modal hidden">
+        <div class="modal-content">
+            <h3>✏️ עריכת ריסוס</h3>
+            <form id="edit-form">
+                <input type="hidden" id="edit-spray-id">
+                <div class="form-group">
+                    <label>תאריך:</label>
+                    <input type="date" id="edit-date" required>
+                </div>
+                <div class="form-group">
+                    <label>ענף:</label>
+                    <select id="edit-branch" required>
+                        <option value="lychee">🍒 ליצ'י</option>
+                        <option value="olives">🫒 זיתים</option>
+                        <option value="avocado">🥑 אבוקדו</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>חלקה:</label>
+                    <input type="text" id="edit-plot">
+                </div>
+                <div class="form-group">
+                    <label>שם התכשיר:</label>
+                    <input type="text" id="edit-product" required>
+                </div>
+                <div class="form-group">
+                    <label>ריכוז/מינון:</label>
+                    <input type="text" id="edit-concentration">
+                </div>
+                <div class="form-group">
+                    <label>מטרה/מזיק:</label>
+                    <input type="text" id="edit-target">
+                </div>
+                <div class="form-group">
+                    <label>שטח (דונם):</label>
+                    <input type="number" id="edit-area" step="0.1">
+                </div>
+                <div class="form-group">
+                    <label>הערות:</label>
+                    <textarea id="edit-notes" rows="2"></textarea>
+                </div>
+                <div class="modal-buttons">
+                    <button type="submit" class="btn-save">💾 שמור</button>
+                    <button type="button" class="btn-cancel" onclick="closeEditModal()">❌ ביטול</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    
+    <!-- Firebase Config -->
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBR-x0Z4VHlpZ2kZzZQ0dXuJ9kK9J1YQXE",
+            authDomain: "meshek-klein.firebaseapp.com",
+            projectId: "meshek-klein",
+            storageBucket: "meshek-klein.firebasestorage.app",
+            messagingSenderId: "871436384256",
+            appId: "1:871436384256:web:f2b8d8c9e4a3b5c6d7e8f9"
+        };
+        
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+    </script>
+    
+    <script src="js/app.js"></script>
+</body>
+</html>
