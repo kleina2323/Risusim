@@ -330,15 +330,30 @@ db.collection('sprays').onSnapshot(() => {
 // עריכת ריסוס
 // ===================
 
+// פורמט תאריך ל-input type="date"
+function formatDateForInput(dateString) {
+    if (!dateString) return '';
+    // אם כבר בפורמט YYYY-MM-DD
+    if (/^\d{4}-\d{2}-\d{2}$/.test(dateString)) {
+        return dateString;
+    }
+    // נסה להמיר מפורמט אחר
+    const date = new Date(dateString);
+    if (isNaN(date.getTime())) return '';
+    return date.toISOString().split('T')[0];
+}
+
 // פתיחת modal לעריכה
 function openEditModal(sprayId) {
     const spray = spraysCache.find(s => s.id === sprayId);
     if (!spray) return;
     
     document.getElementById('edit-spray-id').value = sprayId;
-    document.getElementById('edit-date').value = spray.date;
+    document.getElementById('edit-date').value = formatDateForInput(spray.date);
     document.getElementById('edit-branch').value = spray.branch;
-    document.getElementById('edit-plot').value = spray.plot || '';
+    
+    // עדכון חלקות לפי הענף
+    updateEditPlots(spray.branch, spray.plot || '');
     document.getElementById('edit-product').value = spray.product;
     document.getElementById('edit-concentration').value = spray.concentration || '';
     document.getElementById('edit-target').value = spray.target || '';
@@ -384,4 +399,26 @@ document.getElementById('edit-modal').addEventListener('click', (e) => {
     if (e.target.id === 'edit-modal') {
         closeEditModal();
     }
+});
+
+// עדכון חלקות בטופס עריכה
+function updateEditPlots(branch, selectedPlot) {
+    const plotSelect = document.getElementById('edit-plot');
+    const plots = plotsByBranch[branch] || [];
+    
+    plotSelect.innerHTML = '<option value="">בחר חלקה</option>';
+    
+    if (plots.length > 0) {
+        plots.forEach(plot => {
+            const selected = plot === selectedPlot ? 'selected' : '';
+            plotSelect.innerHTML += `<option value="${plot}" ${selected}>${plot}</option>`;
+        });
+    } else {
+        plotSelect.innerHTML = '<option value="">אין חלקות מוגדרות</option>';
+    }
+}
+
+// עדכון חלקות כשמשנים ענף בטופס עריכה
+document.getElementById('edit-branch').addEventListener('change', function() {
+    updateEditPlots(this.value, '');
 });
