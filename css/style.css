@@ -178,6 +178,10 @@ header .datetime {
     margin-bottom: 1rem;
 }
 
+.form-row.two-cols {
+    grid-template-columns: repeat(2, 1fr);
+}
+
 .form-group {
     display: flex;
     flex-direction: column;

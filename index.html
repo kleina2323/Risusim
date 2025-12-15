@@ -36,11 +36,16 @@
             <h2>📝 הוסף ריסוס חדש</h2>
             
             <form id="spray-form">
-                <div class="form-row">
+                <!-- שורה 1: הוסף ריסוס + תאריך -->
+                <div class="form-row two-cols">
                     <div class="form-group">
                         <label for="spray-date">תאריך:</label>
                         <input type="date" id="spray-date" required>
                     </div>
+                </div>
+                
+                <!-- שורה 2: ענף + חלקה -->
+                <div class="form-row two-cols">
                     <div class="form-group">
                         <label for="spray-branch">ענף:</label>
                         <select id="spray-branch" required>
@@ -56,17 +61,22 @@
                             <option value="">בחר חלקה</option>
                         </select>
                     </div>
+                </div>
+                
+                <!-- שורה 3: שם התכשיר + ריכוז -->
+                <div class="form-row two-cols">
                     <div class="form-group">
                         <label for="spray-product">שם התכשיר:</label>
                         <input type="text" id="spray-product" placeholder="לדוגמה: קונפידור, מלאתיון..." required>
                     </div>
-                </div>
-                
-                <div class="form-row">
                     <div class="form-group">
                         <label for="spray-concentration">ריכוז/מינון:</label>
                         <input type="text" id="spray-concentration" placeholder="לדוגמה: 0.5% או 100 מ״ל לדונם">
                     </div>
+                </div>
+                
+                <!-- שורה 4: מטרה + שטח -->
+                <div class="form-row two-cols">
                     <div class="form-group">
                         <label for="spray-target">מטרה/מזיק:</label>
                         <input type="text" id="spray-target" placeholder="לדוגמה: כנימות, תריפס, עש...">
@@ -77,6 +87,7 @@
                     </div>
                 </div>
                 
+                <!-- שורה 5: הערות -->
                 <div class="form-group full-width">
                     <label for="spray-notes">הערות:</label>
                     <textarea id="spray-notes" rows="2" placeholder="מזג אוויר, תצפיות, הערות נוספות..."></textarea>
