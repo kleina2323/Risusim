@@ -549,8 +549,9 @@ footer {
     
     .header-container {
         flex-direction: row;
-        gap: 0.5rem;
+        gap: 0.8rem;
         align-items: center;
+        justify-content: flex-start;
     }
     
     .header-text {
@@ -562,11 +563,13 @@ footer {
         height: 40px;
         width: 40px;
         border-radius: 50%;
+        margin-left: 0;
     }
     
     header h1 {
         font-size: 1.1rem;
         margin-bottom: 0;
+        text-align: right;
     }
     
     header .subtitle {
@@ -576,6 +579,7 @@ footer {
     .header-text .datetime {
         font-size: 0.7rem;
         margin-top: 0.2rem;
+        text-align: right;
     }
     
     .container {
@@ -598,20 +602,21 @@ footer {
     
     .stats-section {
         grid-template-columns: repeat(3, 1fr);
-        gap: 0.3rem;
-        margin-bottom: 0.5rem;
+        gap: 0.2rem;
+        margin-bottom: 0.4rem;
     }
     
     .stat-card {
-        padding: 0.5rem 0.3rem;
+        padding: 0.2rem 0.2rem;
+        border-radius: 8px;
     }
     
     .stat-number {
-        font-size: 1.1rem;
+        font-size: 0.85rem;
     }
     
     .stat-label {
-        font-size: 0.65rem;
+        font-size: 0.55rem;
     }
     
     .form-section {
