@@ -543,99 +543,102 @@ footer {
 /* Responsive */
 @media (max-width: 700px) {
     header {
-        padding: 0.8rem;
+        padding: 0.5rem;
     }
     
     .header-container {
         flex-direction: row;
-        gap: 0.8rem;
+        gap: 0.5rem;
+        align-items: center;
     }
     
     .header-text {
         text-align: right;
+        flex: 1;
     }
     
     .header-logo {
-        height: 70px;
+        height: 50px;
         width: auto;
+        border-radius: 5px;
     }
     
     header h1 {
-        font-size: 1.3rem;
-        margin-bottom: 0.2rem;
+        font-size: 1.1rem;
+        margin-bottom: 0;
     }
     
     header .subtitle {
-        font-size: 0.8rem;
-        margin-bottom: 0.2rem;
+        display: none;
     }
     
     .header-text .datetime {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
+        margin-top: 0.2rem;
     }
     
     .container {
-        padding: 0.8rem;
+        padding: 0.5rem;
     }
     
     .tabs-section {
-        margin-bottom: 0.8rem;
+        margin-bottom: 0.5rem;
     }
     
     .tabs {
-        padding: 0.3rem;
-        gap: 0.3rem;
+        padding: 0.2rem;
+        gap: 0.2rem;
     }
     
     .tab-btn {
-        padding: 0.5rem;
-        font-size: 0.8rem;
+        padding: 0.4rem 0.2rem;
+        font-size: 0.7rem;
     }
     
     .stats-section {
         grid-template-columns: repeat(3, 1fr);
-        gap: 0.5rem;
-        margin-bottom: 1rem;
+        gap: 0.3rem;
+        margin-bottom: 0.5rem;
     }
     
     .stat-card {
-        padding: 0.8rem 0.5rem;
+        padding: 0.5rem 0.3rem;
     }
     
     .stat-number {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
     }
     
     .stat-label {
-        font-size: 0.7rem;
+        font-size: 0.65rem;
     }
     
     .form-section {
-        padding: 1rem;
-        margin-bottom: 1rem;
+        padding: 0.8rem;
+        margin-bottom: 0.8rem;
     }
     
     .form-section h2 {
-        font-size: 1.1rem;
-        margin-bottom: 1rem;
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
     }
     
     .form-row {
         grid-template-columns: 1fr 1fr;
-        gap: 0.5rem;
-        margin-bottom: 0.5rem;
+        gap: 0.4rem;
+        margin-bottom: 0.4rem;
     }
     
     .form-group label {
-        font-size: 0.8rem;
-        margin-bottom: 0.2rem;
+        font-size: 0.75rem;
+        margin-bottom: 0.1rem;
     }
     
     .form-group input,
     .form-group select,
     .form-group textarea {
-        padding: 0.5rem;
-        font-size: 0.9rem;
+        padding: 0.4rem;
+        font-size: 0.85rem;
     }
     
     .form-group.full-width {
@@ -644,30 +647,61 @@ footer {
     
     .btn-row {
         margin-top: 0.5rem;
+        gap: 0.5rem;
     }
     
     .btn-add {
-        padding: 0.7rem;
-        font-size: 1rem;
+        padding: 0.6rem;
+        font-size: 0.9rem;
     }
     
     .btn-image {
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
     }
     
     .spray-card {
-        padding: 0.8rem;
+        padding: 0.6rem;
+    }
+    
+    .spray-product {
+        font-size: 0.95rem;
+    }
+    
+    .spray-date {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.4rem;
     }
     
     .spray-details {
         grid-template-columns: 1fr 1fr;
-        font-size: 0.8rem;
+        font-size: 0.75rem;
+        gap: 0.3rem;
+    }
+    
+    .spray-notes {
+        font-size: 0.75rem;
+        margin-top: 0.5rem;
+        padding-top: 0.5rem;
     }
     
     .modal-content {
         width: 95%;
         padding: 1rem;
-        max-height: 85vh;
+        max-height: 90vh;
+    }
+    
+    .export-section {
+        margin-bottom: 1rem;
+    }
+    
+    .btn-export {
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+    }
+    
+    footer {
+        padding: 1rem;
+        font-size: 0.8rem;
     }
 }
